@@ -39,22 +39,21 @@ return function(context, key)
 
 	local namespace = "var_" .. (gameWide and "global" or tostring(context.Executor.UserId))
 
+	local value
+
 	if saved then
 		local keyPath = namespace .. "_" .. key
-		local value = DataStore:GetAsync(keyPath) or ""
-		if type(value) == "table" then
-			return table.concat(value, ",") or ""
-		end
-		return value
+
+		value = DataStore:GetAsync(keyPath)
 	else
 		local store = context:GetStore(namespace)
 
-		local value = store[key] or ""
-
-		if type(value) == "table" then
-			return table.concat(value, ",") or ""
-		end
-
-		return value
+		value = store[key]
 	end
+
+	if type(value) == "table" then
+		return table.concat(value, ",")
+	end
+
+	return value or ""
 end
