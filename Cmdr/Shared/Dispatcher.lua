@@ -142,7 +142,7 @@ end
 	@return string -- Command output or error message
 ]=]
 function Dispatcher:Send(text: string, data: any?)
-	if RunService:IsClient() == false then
+	if not RunService:IsClient() then
 		error("[Cmdr] Dispatcher:Send can only be called from the client.")
 	end
 
