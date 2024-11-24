@@ -46,7 +46,7 @@ return {
 				for i, arg in ipairs(command.Args) do
 					context:Reply(
 						`#{i} {if type(arg) == "table"
-							then `{arg.Name}{if arg.Optional == true then "?" else ""}: {arg.Type} - {arg.Description}`
+							then `{arg.Name}{if arg.Optional then "?" else ""}: {arg.Type} - {arg.Description}`
 							else "Unknown (inline argument)"}`
 					)
 				end
