@@ -43,7 +43,7 @@ local Dispatcher = {
 	@return (command) | (false, string) -- if unsuccessful, returns false and the error text
 ]=]
 function Dispatcher:Evaluate(text: string, executor: Player, allowIncompleteArguments: boolean?, data: any?)
-	if RunService:IsClient() == true and executor ~= Players.LocalPlayer then
+	if RunService:IsClient() and executor ~= Players.LocalPlayer then
 		error("[Cmdr] Can't evaluate a command that isn't sent by the local player.")
 	end
 
