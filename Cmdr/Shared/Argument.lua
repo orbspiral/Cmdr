@@ -116,7 +116,7 @@ function Argument.new(command, argumentDefinition, value)
 		Type = nil,
 		Name = argumentDefinition.Name,
 		Object = argumentDefinition,
-		Required = argumentDefinition.Default == nil and argumentDefinition.Optional ~= true,
+		Required = argumentDefinition.Default == nil and not argumentDefinition.Optional,
 		Executor = command.Executor,
 		RawValue = value,
 		RawSegments = {},
